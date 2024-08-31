@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Click The Box</title>
+<link rel="stylesheet" type="text/css" href="//clickthebox.algebratogether.com/style.css">
+<style type="text/css">
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+<script src="//clickthebox.algebratogether.com/items.js"></script>
+<script>
+// For FireFox
+if ($.browser.webkit) {
+  window.location="http://clickthebox.algebratogether.com/";
+}
+  else if ($.browser.mozilla) {
+}
+else{
+  window.location="http://www.google.com/404_not_found.html";
+}
+// Default Settings 
+var speed = "false",
+ten = "false",
+twenty = "false",
+thirty = "false",
+dpoints = "false",
+tpoints = "false",
+qpoints = "false",
+orange = "false",
+yellow = "false",
+circle = "false",
+triangle = "false",
+box_color = "red",
+shape = "square",
+get_slow = 0,
+get_fast = 0,
+get_advanced = 0,
+get_king = 0,
+exp = 0,
+seconds,
+game_started = "false";
+$(document).ready(function(){
+$(".question").hide();
+$(".box").hide();
+$(".restart").hide();
+$(".reached_achievement").hide();
+$(".start").click(function(){
+$(".box").fadeIn();
+});
+});
+
+// exp_bar
+$(function() {
+var exp_bar = $( "#exp_bar" ),
+exp_bar_text = $( ".exp_bar_text" );
+exp_bar.progressbar({
+value: 0,
+change: function() {
+exp_bar_text.text( "EXP: " + exp_bar.progressbar( "value" ) + "%" );
+},
+complete: function() {
+exp_bar_text.text( "EXP: 0%" );
+$("#exp_bar").progressbar( "value", 0 );
+var get_level = document.getElementById("level"),
+lev = parseInt(get_level.innerHTML);
+get_level.innerHTML = ++lev;
+}
+});
+$("#exp_bar").css({ 'border-radius': '0px' });
+$("#exp_bar").css({ 'border': '2px solid #4DB8FF' });
+$("#exp_bar").css({ 'outline': '2px solid white' });
+$("#exp_bar").css({ 'height': '15px' });
+$("#exp_bar").css({ 'width': '220px' });
+$("#exp_bar").css({ 'background': 'white' });
+$("#exp_bar").css({ 'clear': 'left' });
+$("#exp_bar").css({ 'float': 'left' });
+$("#exp_bar").css({ 'margin': '5px' });
+$("#exp_bar > div").css({ 'background': '#B0AFAF' });
+$("#exp_bar > div").css({ 'border-radius': '0px' });
+$("#exp_bar > div").css({ 'position': 'relative' });
+$("#exp_bar > div").css({ 'top': '-14px' });
+$("#exp_bar > div").css({ 'left': '1px' });
+});
+
+
+// Mouse Click Scripts
+function mouse_click() {
+x = document.getElementById("score");
+var now_score = x.innerHTML;
+if (speed == "true"){
+  double_click = ++now_score;
+  x.innerHTML = ++double_click;
+}
+x.innerHTML = ++now_score;
+}
+
+// Timer Script
+$(document).ready(function(){
+  $(".start").click(function(){
+     seconds = 11;
+     if(ten == "true"){
+       seconds = seconds + 10;
+     }
+     if(twenty == "true"){
+       seconds = seconds + 20;
+     }
+     if(thirty == "true"){
+       seconds = seconds + 30;
+     }
+     timer_display();
+  });
+});
+
+function timer_display() {
+    if(seconds > 0) {
+        seconds--;
+        document.getElementById('timer_display').innerHTML = seconds + "s";
+        if(seconds > 0) {
+            setTimeout('timer_display()', 1000);
+            setTimeout('Timing()', 1000);
+        }
+    }
+}
+
+// Start Scripts
+function start() {
+game_started = "true";
+y = document.getElementById("tries");
+tries = y.innerHTML;
+y.innerHTML = ++tries;
+$(document).ready(function(){
+$(".start").hide();
+});
+}
+
+// Timing Script
+function Timing(){
+if (seconds == 0){
+x = document.getElementById("score");
+var click = x.innerHTML,
+score;
+if (dpoints == "true"){
+  a = "You clicked " + click * 2 + " times<br />";
+  score = click * 2;
+}
+else if (tpoints == "true"){
+  a = "You clicked " + click * 3 + " times<br />";
+  score = click * 3;
+}
+else if (qpoints == "true"){
+  a = "You clicked " + click * 4 + " times<br />";
+  score = click * 4;
+}
+else {
+  a = "You clicked " + click + " times<br />";
+  score = click;
+}
+var b;
+if (score <= 0)
+{
+b = "You need to click in the red box!";
+}
+if (score > 0 && score <= 50)
+{
+b = "You did a bad job.";
+}
+else if (score > 50 && score <= 80)
+{
+b = "You did an okay job.";
+}
+else if (score > 80 && score <= 100)
+{
+b = "You did a good job.";
+}
+else if (score > 100 && score <= 120)
+{
+b = "You did a very good job.";
+}
+else if (score > 120)
+{
+b = "Unbelievable!";
+}
+x.innerHTML = score+ "<br />" + a + b;
+x.id = "none";
+
+z = document.getElementById("best_score");
+var best = z.innerHTML;
+if (parseInt(best) < score){
+ z.innerHTML = score;
+}
+
+m = document.getElementById("money");
+money = parseInt(m.innerHTML) + parseInt(click) / 10;
+m.innerHTML = money;
+
+if(speed == "true"){
+  speed = "false";
+}
+
+if(ten == "true"){
+  ten = "false";
+}
+
+if (twenty == "true"){
+  twenty = "false"
+}
+
+if (thirty == "true"){
+  thirty = "false"
+}
+
+if (dpoints == "true"){
+  dpoints = "false"
+}
+
+if (tpoints == "true"){
+  tpoints = "false"
+}
+
+if (qpoints == "true"){
+  qpoints = "false"
+}
+
+$(document).ready(function(){
+  $(".box").fadeOut();
+  $(".restart").fadeIn(1000);
+});
+game_started = "false";
+var level = document.getElementById("level").innerHTML;
+var val = $("#exp_bar").progressbar( "value" ) || 0;
+$("#exp_bar").progressbar( "value", Math.round(val + parseInt(click) / parseInt(level)) );
+rank();
+}
+}
+
+function restart(){
+$(document).ready(function(){
+$(".restart").hide();
+$(".start").fadeIn();
+});
+x = document.getElementById("none");
+x.innerHTML = 0;
+x.id = "score";
+s = document.getElementById("timer_display")
+s.innerHTML = "";
+clearTimeout(timer);
+}
+
+// Tooltip for ?
+$(function() {
+    $( document ).tooltip();
+});
+
+// Rank Scripts
+function rank(){
+lv = document.getElementById("level");
+rank = document.getElementById("rank");
+if (lv.innerHTML > 1 && lv.innerHTML <= 5){
+  lv.innerHTML = "New Clicker";
+}
+else if (parseInt(lv.innerHTML) >= 6 && parseInt(lv.innerHTML) <= 10){
+  rank.innerHTML = "Slow Clicker";
+  document.getElementById("get_slow").innerHTML = "&#10004;";
+  if (get_slow == 0){
+    reached_achievement(0);
+  }
+}
+else if (parseInt(lv.innerHTML) >= 11 && parseInt(lv.innerHTML) <= 15){
+  rank.innerHTML = "Fast Clicker";
+  document.getElementById("get_fast").innerHTML = "&#10004;";
+  if (get_fast == 0){
+    reached_achievement(1);
+  }
+}
+else if (parseInt(lv.innerHTML) >= 16 && parseInt(lv.innerHTML) <= 20){
+  rank.innerHTML = "Advanced Clicker";
+  document.getElementById("get_advanced").innerHTML = "&#10004;";
+  if (get_advanced == 0){
+    reached_achievement(2);
+  }
+}
+else if (parseInt(lv.innerHTML) >= 21 && parseInt(lv.innerHTML) <= 30){
+  rank.innerHTML = "King of Clickers";
+  document.getElementById("get_king").innerHTML = "&#10004;";
+  if (get_king == 0){
+    reached_achievement(3);
+  }
+}
+else if (parseInt(lv.innerHTML) >= 31){
+  rank.innerHTML = "god of Clickers";
+}
+}
+
+// Hide and show achievements script
+function show_achievement(){ 
+document.getElementById("achievements").style.display= "inherit";
+}
+
+function hide_achievement(){ 
+document.getElementById("achievements").style.display= "none";
+}
+
+// Reached Achievement Pop Up Warning Script
+function reached_achievement(id){
+if (id == 0){
+  $(".reached_achievement").slideDown();
+  document.getElementById("reached_achievement").innerHTML = 'Achievement Reached:<br />"Slow Clicker"';
+  setTimeout(function(){$(document).ready(function(){$(".reached_achievement").slideUp();});},3000);
+}
+if (id == 1){
+  $(".reached_achievement").slideDown();
+  document.getElementById("reached_achievement").innerHTML = 'Achievement Reached:<br />"Fast Clicker"';
+  setTimeout(function(){$(document).ready(function(){$(".reached_achievement").slideUp();});},3000);
+}
+if (id == 2){
+  $(".reached_achievement").slideDown();
+  document.getElementById("reached_achievement").innerHTML = 'Achievement Reached:<br />"Advanced Clicker"';
+  setTimeout(function(){$(document).ready(function(){$(".reached_achievement").slideUp();});},3000);
+}
+if (id == 3){
+  $(".reached_achievement").slideDown();
+  document.getElementById("reached_achievement").innerHTML = 'Achievement Reached:<br />"King of Clickers"';
+  setTimeout(function(){$(document).ready(function(){$(".reached_achievement").slideUp();});},3000);
+}
+}
+
+// Loading Script
+function loadPage(){
+document.getElementById("loading").style.display = "none";
+}
+
+// Show and Hide details Script
+function showDetails(num){
+document.getElementsByClassName('details')[num].style.display = "block";
+}
+function hideDetails(num){
+document.getElementsByClassName('details')[num].style.display = "none";
+}
+</script>
+</head>
+<body id="body" class="body" onload="loadPage();">
+<div id="reached_achievement" class="reached_achievement">
+</div>
+<img src="//clickthebox.algebratogether.com/mouse.png" /><span style="vertical-align:25px;"><h1>Click The Box<sup>beta 4.1</sup></h1></span>
+<center>
+<div id="menu">
+<ul>
+<li>Shop:</li>
+<li>Click
+<ul>
+<li class="speed">$50 Double Click</li>
+</ul>
+</li>
+<li>Points
+<ul>
+<li class="dpoints">$99 Double</li>
+<li class="tpoints">$199 Triple</li>
+<li class="qpoints">$299 Quadruple</li>
+</ul>
+</li>
+<li>Timing
+<ul>
+<li class="ten">$100 10 Seconds</li>
+<li class="twenty">$200 20 Seconds</li>
+<li class="thirty">$300 30 Seconds</li>
+</ul>
+</li>
+<li>Shape
+<ul>
+<li id="square" class="square">Square</li>
+<li id="circle" class="circle">$500 Circle</li>
+<li id="triangle" class="triangle">$500 Triangle</li>
+</ul>
+</li>
+<li>Color
+<ul>
+<li class="red">Red</li>
+<li id="orange" class="orange">$500 Orange</li>
+<li id="yellow" class="yellow">$500 Yellow</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="x">
+<p>
+<span style="float:right;font-weight:bold;color:#000000;padding:3px;position:relative;bottom:0px;text-align: center;">Tries: <span id="tries">0</span></span>
+<span style="float:right;font-weight:bold;color:#000000;padding:3px;position:relative;bottom:0px;text-align:center;">Best Score: <span id="best_score">0</span> |</span>
+<span style="float:right;font-weight:bold;color:#000000;padding:3px;position:relative;bottom:0px;">Money: <span id="money">100000</span> |</span>
+<table style="float:left;position:relative;left: -3px;">
+<td><span style="font-weight:bold;color:#000000;">Level: <span id="level">6</span></span></td>
+<td><span id="rank" style="float:left;font-weight:bold;color:#000000;clear:left;padding:3px;">New Clicker</span></td>
+</table>
+<br /><br />
+<div onmouseover="show_achievement();" onmouseout="hide_achievement();">
+<span class="achievements" style="float:right;">Achievements</span>
+<div style="position:relative;">
+<div id="achievements">
+<p onmouseover="showDetails(0)" onmouseout="hideDetails(0)"><span class="check" id="get_slow"></span>Slow Clicker</p>
+<div class="details" style="top:-5px;">To reach this achievement, you need get the "Slow Clicker" rank. To get that rank you need to reach level 6.</div>
+<p onmouseover="showDetails(1)" onmouseout="hideDetails(1)"><span class="check" id="get_fast"></span>Fast Clicker</p>
+<div class="details" style="top:30px;">To reach this achievement, you need get the "Fast Clicker" rank. To get that rank you need to reach level 11.</div>
+<p onmouseover="showDetails(2)" onmouseout="hideDetails(2)" style="font-size:15px;"><span class="check" id="get_advanced"></span>Advanced Clicker</p>
+<div class="details" style="top:65px;">To reach this achievement, you need get the "Advanced Clicker" rank. To get that rank you need to reach level 16.</div>
+<p onmouseover="showDetails(3)" onmouseout="hideDetails(3)" style="border-bottom: 0px solid #E0E0E0;"><span class="check" id="get_king"></span>King of Clickers</p>
+<div class="details" style="top:100px;">To reach this achievement, you need get the "King of Clickers" rank. To get that rank you need to reach level 21.</div>
+</div>
+</div>
+</div>
+<div style="float:left" id="exp_bar"><center><div class="exp_bar_text">EXP: 0%</div></center></div>
+<br />
+</p>
+<center>
+<div class="play_area">
+<p style="clear:both;">Time Left: <span id="timer_display"></span></p>
+<span>Score: </span><span id="score">0</span>
+<br />
+<div id="box" class="box" style="height:40px;width:40px;background-color:red;" onclick="mouse_click()">
+</div>
+<br />
+<button type="button" class="start" onclick="start();">Start the game</button>
+<button type="button" class="restart" onclick="restart();")>Restart</button>
+</div>
+</center>
+</div>
+<br />
+</center>
+<br />
+<p style="font-size:0.813em;">
+&copy;2010-2013 Algebra Together.com. All rights reserved.
+Game Created by Jacky Au Yeung
+</p>
+<div id="loading" style="width:10000px;height:10000px;position:absolute;z-index:10000;background-color:white;left:0;top:0;">
+<center>
+<p style="font-size:50px;position:absolute;z-index:10001;">Loading...</p>
+</center>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+// For Chrome
+if ($.browser.mozilla) {
+  window.location="http://clickthebox.algebratogether.com/firefox.html";
+}
+  else if ($.browser.webkit) {
+}
+else{
+  window.location="http://www.google.com/404_not_found.html";
+}
+
+// For FireFox
+if ($.browser.webkit) {
+  window.location="http://clickthebox.algebratogether.com/";
+}
+  else if ($.browser.mozilla) {
+}
+else{
+  window.location="http://www.google.com/404_not_found.html";
+}
+

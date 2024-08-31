@@ -1,0 +1,298 @@
+#index-animation1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    margin-left:150px;
+    -webkit-animation-name: index-animation1;
+    animation-name: index-animation;
+    -webkit-animation: index-animation1 5s infinite;
+}
+@-webkit-keyframes index-animation1 {
+    0% {top:0px;}
+    12.5% {top:100px;}
+    25% {top:200px;}
+    37.5% {top:300px;}
+    50% {top:400px;}
+    62.5% {top:500px;}
+    77.5% {top:600px;}
+    90% {top:700px;}
+    100% {top:800px;}
+}
+#index-animation2 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    right: 0px;
+    margin-right:150px;
+    -webkit-animation-name: index-animation2;
+    animation-name: index-animation;
+    -webkit-animation: index-animation2 5s infinite;
+}
+@-webkit-keyframes index-animation2 {
+    0% {bottom:0px;}
+    12.5% {bottom:100px;}
+    25% {bottom:200px;}
+    37.5% {bottom:300px;}
+    50% {bottom:400px;}
+    62.5% {bottom:500px;}
+    77.5% {bottom:600px;}
+    90% {bottom:700px;}
+    100% {bottom:800px;}
+}
+#title-div {
+    width: 20%;
+    margin: 0 auto;
+    cursor:pointer;
+}
+#title-text {
+    position: absolute;
+    top: 8px;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    float:left;
+}
+#taskbar {
+    position: fixed;
+    right: 0; left: 0; top:0;
+    height: 70px;
+    background-color:#25292C;
+    min-width: 1920px;
+    box-shadow: 0px 1px 1px #888888;
+    z-index: 10;
+}
+#login { 
+    color: #FFFFFF;
+    float: right;
+    background: linear-gradient(to right, white 50%, #30D630 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    top: 20px;
+    right: 20px;
+}
+#login:hover {
+    -webkit-animation-name: login;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes login {
+    100% {background-position:left bottom; color:#30D630;}
+}
+#logout { 
+    color: #FFFFFF;
+    float: right;
+    background: linear-gradient(to right, white 50%, red 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    top: 20px;
+    right: 20px;
+}
+#logout:hover {
+    -webkit-animation-name: logout;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes logout {
+    100% {background-position:left bottom; color:red;}
+}
+#register{ 
+    color: white;
+    float: right;
+    background: linear-gradient(to right, white 50%, orange 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    top: 20px;
+    right: 160px;
+}
+#register:hover {
+    -webkit-animation-name: register;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes register {
+    100% {background-position:left bottom; color:orange;}
+}
+#game-canvas {
+    min-width: 800px;
+    min-height: 600px;
+    width: 50%;
+    margin: 0 auto;
+    top: 125px;
+    position: relative;
+}
+#status {
+    min-width: 300px;
+    min-height: 68px;
+    max-width: 300px;
+    max-height: 68px;
+    float: left;
+    background-color: #25292C;
+}
+#status-text {
+    position: relative;
+    top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+#profile-picture {
+    float:left;
+    margin: 10px;
+    border-radius:100%;
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+#progressbar {
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 20px;
+    max-height: 20px;
+    margin-top: 15px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    float:left;
+    background: linear-gradient(to right, gray 50%, #25292C 50%);
+    background-size: 100% 100%;
+    background-position:right bottom;
+}
+#progressbar-text {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    bottom: 8px;
+}
+#shop {
+    min-width: 800px;
+    max-width: 900px;
+    min-height: 50px;
+    max-height: 50px;
+    width: 50%;
+    margin: 0 auto;
+    position: relative;
+    top: 20px;
+    background-color: #25292C;
+    border-radius: 2px;
+}
+#shop td {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    min-width: 100px;
+    max-width: 100px;
+    cursor:pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+#footer {
+    font-size: 10px;
+    position: fixed;
+    bottom: 0px;
+    min-width: 200px;
+}
+#settings {
+    background-image: url(http://clickthebox.algebratogether.com/test/settings.png);
+    background-size: 40px 40px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top:10px;
+}
+#sign-up { 
+    color: #FFFFFF;
+    background: linear-gradient(to right, white 50%, #25292C 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+}
+#sign-up:hover {
+    -webkit-animation-name: sign-up;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes sign-up {
+    100% {background-position:left bottom; color:#25292C;}
+}
+#start-game { 
+    color: #FFFFFF;
+    background: linear-gradient(to right, white 50%, #25292C 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    height: 100px;
+    width: 200px;
+    position: relative;
+    left: 250px;
+    top: 50px;
+}
+#start-game:hover {
+    -webkit-animation-name: start-game;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes start-game {
+    100% {background-position:left bottom; color:#25292C;}
+}
+#time-left {
+    font-size: 30px;
+    text-align: center;
+    display: none;
+}
+#score {
+    font-size: 30px;
+    text-align: center;
+}
+#game-box {
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+    background-color: red;
+    margin: 0 auto;
+    width: 50%;
+    display: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+.clickable:hover {
+    -webkit-animation-name: shop;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes shop {
+    100% {background-color: #66696B}
+}
+.display-box {
+    background-color: white;
+    box-shadow: 0px 1px 1px #888888;
+}
+body {
+    font-family: 'Arimo', sans-serif;
+    font-weight: bold;
+    color: #25292C;
+}
+button {
+    border: 0px;
+    width:120px;
+    height: 25px;
+    border-radius: 2px;
+    position: absolute;
+    font-size:16px;
+    font-weight:bold;
+    margin-left:10px;
+    margin-right:10px;
+    background-size: 200% 100%;
+    background-position:right bottom;
+}			
+button:hover {
+    -webkit-animation-name: button;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@-webkit-keyframes button {
+    100% {background-position:left bottom; color:black;}
+}
